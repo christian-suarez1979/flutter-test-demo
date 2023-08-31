@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:testing_application_complete/dto/counter.dart';
 import 'package:testing_application_complete/user_repository.dart';
 import 'package:testing_application_complete/user_widget.dart';
 import 'package:testing_application_complete/users_widget.dart';
@@ -18,8 +19,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      //home: const UserWidget(),
+      //home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const UserWidget(),
       /*home: UsersWidget(
         futureUsers: userRepository.getUsers(),
       ),*/
@@ -46,11 +47,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  Counter counter = Counter();
 
   void _incrementCounter() {
     setState(() {
-      _counter++;
+      counter.incrementCounter();
     });
   }
 
@@ -69,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
               'You have pushed the button this many times:',
             ),
             Text(
-              '$_counter',
+              '${counter.counter}',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             /*FloatingActionButton(
